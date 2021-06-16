@@ -7,7 +7,7 @@ router.post('/', (req, res, next) => {
     console.log(data_de_cadastro);
     mysql.getConnection((error, conn) => {
         conn.query(
-            'INSERT INTO usuario (Usuario, Senha, Data_de_Cadastro, Email_do_Usuario) VALUES (?,?,?,?)',
+            'INSERT INTO usuario (Usuario, Senha, Data_de_Cadastro, Email_do_Usuario, Configuracoes_idConfiguracoes) VALUES (?,?,?,?,1)',
             [req.body.usuario, req.body.senha, data_de_cadastro, req.body.email],
             (error, resultado, field) => {
 
@@ -22,10 +22,13 @@ router.post('/', (req, res, next) => {
 
                 res.status(201).send({
                     mensagem: 'Registro feito com sucesso',
-                    id_registro: resultado.insertId
+                    id_produto: resultado.insertId
                 })
+
             }
         )
+
+
     })
 });
 

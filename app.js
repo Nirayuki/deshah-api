@@ -6,6 +6,7 @@ const cors = require("cors")
 
 const rotaRegistro = require('./routes/registro');
 const rotaPergunta = require('./routes/perguntasConsultar');
+const rotaLogin = require('./routes/login');
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false}));
@@ -29,6 +30,7 @@ app.use((req, res, next) => {
 
 app.use('/registro', rotaRegistro);
 app.use('/perguntas', rotaPergunta);
+app.use('/login', rotaLogin);
 
 
 app.use((req, res, next) => {
